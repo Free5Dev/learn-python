@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {# navbar #}
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="{{ path('home') }}">Learn - Python</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor01">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="{{ path('home') }}">Accueil </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('initiation') }}">Initiation</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('perfection') }}">Perfection</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('subscription') }}">Subscription</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        {# endnavbar #}
+        {# header #}
+        <div class="jumbotron">
+                <h1 class="display-3">Développeur d'application - Python</h1>
+                <p class="lead">Maîtrisez Python, le langage des startups et des scientifiques, pour réaliser vos propres applications web !.</p>
+                <hr class="my-4">
+                <p>Ces tutoriels sont accessible à tous. Voici cependant quelques recommandations selon votre niveau:</p>
+                <p class="lead">
+                    <a class="btn btn-primary btn-lg" href="{{ path('initiation') }}" role="button">Initiation</a>
+                     <a class="btn btn-primary btn-lg" href="{{ path('perfection') }}" role="button">Perfection</a>
+                </p>
+        </div>
+            {# endheader #}
+        <section class="container">
+            {% block body %}{% endblock %}
+        </section>
+        {# footer #}
+        <footer class="container-fluid ">
+            <div class="row">
+                <div class="col">
+                    <a href="{{ path('home') }}">Accueil</a>
+                </div>
+                <div class="col">
+                    <p>Copyright 2019 - Tous droits réservés ....</p>
+                </div>
+            </div>
+        </footer>
+        {% block javascripts %}{% endblock %}
+    </body>
+</html>
