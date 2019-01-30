@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
         <link rel="stylesheet" href="https://bootswatch.com/4/united/bootstrap.min.css">
+
+        <link rel="shortcut icon" href="http://www.cite-sciences.fr/fileadmin/_migrated/pics/crochets-serpent-thinkstock.gif" type="image/x-icon">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
@@ -25,11 +27,14 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ path('perfection') }}">Perfection</a>
                     </li>
-                    <li class="nav-item">
+                    {# <li class="nav-item">
                         <a class="nav-link" href="{{ path('subscription') }}">Subscription</a>
-                    </li>
-                    <li class="nav-item">
+                    </li> #}
+                    {# <li class="nav-item">
                         <a class="nav-link" href="{{ path('contact') }}">Contact</a>
+                    </li> #}
+                     <li class="nav-item">
+                        <a class="nav-link" href="{{ path('admin_list') }}">Connexion Admin</a>
                     </li>
                 </ul>
                 <form class="form-inline my-2 my-lg-0">

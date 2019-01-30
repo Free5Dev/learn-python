@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +23,19 @@ class Media
      */
     private $image;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="media")
+     */
+    private $post;
+
+    public function __construct()
+    {
+        $this->post = new ArrayCollection();
+    }
+
+  
+    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -37,4 +52,41 @@ class Media
 
         return $this;
     }
+
+    /**
+     * @return Collection|Post[]
+     */
+    public function getPost(): Collection
+    {
+        return $this->post;
+    }
+
+    public function addPost(Post $post): self
+    {
+        if (!$this->post->contains($post)) {
+            $this->post[] = $post;
+            $post->setMedia($this);
+        }
+
+        return $this;
+    }
+
+    public function removePost(Post $post): self
+    {
+        if ($this->post->contains($post)) {
+            $this->post->removeElement($post);
+            // set the owning side to null (unless already changed)
+            if ($post->getMedia() === $this) {
+                $post->setMedia(null);
+            }
+        }
+
+        return $this;
+    }
+
+    
+
+    
+
+    
 }

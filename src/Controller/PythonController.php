@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
+use App\Entity\Post;
+
 class PythonController extends AbstractController
 {
     /**
@@ -12,33 +14,55 @@ class PythonController extends AbstractController
      */
     public function index()
     {
+        $posts= new Post();
+        $repo=$this->getDoctrine()->getRepository(Post::class);
+        $posts=$repo->findAll();
         return $this->render('python/index.html.twig', [
-            'controller_name' => 'PythonController',
+            'posts' => $posts 
         ]);
     }
     /**
      * @Route("/", name="home")
      */
     public function home(){
-        return $this->render('python/home.html.twig');
+        $posts= new Post();
+        $repo=$this->getDoctrine()->getRepository(Post::class);
+        $posts=$repo->findAll();
+        return $this->render('python/home.html.twig',[
+            'posts' => $posts 
+        ]);
     }
     /**
-     * @Route("/python/12", name="python_show")
+     * @Route("/python/{id}", name="python_show")
      */
-    public function show(){
-        return $this->render('python/show.html.twig');
+    public function show($id){
+        $repo=$this->getDoctrine()->getRepository(Post::class);
+        $post=$repo->find($id);
+        return $this->render('python/show.html.twig',[
+            'post'=>$post
+        ]);
     }
     /**
      * @Route("/initiation", name="initiation")
      */
     public function initiation(){
-        return $this->render('python/initiation.html.twig');
+        $posts= new Post();
+        $repo=$this->getDoctrine()->getRepository(Post::class);
+        $posts=$repo->findAll();
+        return $this->render('python/index.html.twig',[
+            'posts' => $posts 
+        ]);
     }
     /**
      * @Route("/perfection", name="perfection")
      */
     public function perfection(){
-        return $this->render('python/perfection.html.twig');
+        $posts= new Post();
+        $repo=$this->getDoctrine()->getRepository(Post::class);
+        $posts=$repo->findAll();
+        return $this->render('python/index.html.twig',[
+            'posts' => $posts 
+        ]);
     }
     /**
      * @Route("/subscription", name="subscription")
